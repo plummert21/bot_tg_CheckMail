@@ -49,14 +49,14 @@ print(json_in_file, file=open('mail.info', 'a'))
 # https://api.telegram.org/bot<TOKEN>/sendMessage?chat_id=<CHAT_ID>&text=<MSG_TEXT>
 
 # if count_new > 0:
-    msg_text = "Новые записи на проверки: " + str(count_new)
-    url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
-    response = urllib.request.urlopen(url)
-    # requests.post(url)
-    msg_text = "https://edu.21-school.ru/"
-    url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
-    # requests.post(url)
-    msg_text = "📍ПРОВЕРЬ КАЛЕНДАРЬ📍"
-    url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
-    # requests.post(url)
+msg_text = "Новые записи на проверки: " + str(count_new)
+url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
+response = urllib.request.urlopen(url)
+# requests.post(url)
+msg_text = "https://edu.21-school.ru/"
+url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
+# requests.post(url)
+msg_text = "📍ПРОВЕРЬ КАЛЕНДАРЬ📍"
+url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
+# requests.post(url)
 

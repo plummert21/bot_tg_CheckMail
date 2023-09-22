@@ -5,9 +5,7 @@ import imaplib
 import email
 import json
 import os
-# import requests
-import urllib3
-
+import requests
 
 with open('config.json', 'r') as f_config:
     config = json.load(f_config)
@@ -52,14 +50,11 @@ print(json_in_file, file=open('mail.info', 'a'))
 if count_new > 0:
     msg_text = "Новые записи на проверки: " + str(count_new)
     url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
-    resp = urllib3.request("GET", url)
-    # requests.post(url)
+    requests.post(url)
     msg_text = "https://edu.21-school.ru/"
     url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
-    resp = urllib3.request("GET", url)
-    # requests.post(url)
+    requests.post(url)
     msg_text = "📍ПРОВЕРЬ КАЛЕНДАРЬ📍"
     url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
-    resp = urllib3.request("GET", url)
-    # requests.post(url)
+    requests.post(url)
 

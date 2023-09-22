@@ -51,7 +51,7 @@ json_in_file = json.dumps(dic_new)
 os.remove(file_info)
 print(json_in_file, file=open(file_info, 'a'))
 
-# Send count new massage in Telegram
+# Send new message count in Telegram
 # https://api.telegram.org/bot<TOKEN>/sendMessage?chat_id=<CHAT_ID>&text=<MSG_TEXT>
 
 if count_new > 0:

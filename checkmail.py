@@ -48,7 +48,7 @@ print(json_in_file, file=open('mail.info', 'a'))
 # Send count new massage in Telegram
 # https://api.telegram.org/bot<TOKEN>/sendMessage?chat_id=<CHAT_ID>&text=<MSG_TEXT>
 
-if count_new > 0:
+# if count_new > 0:
     msg_text = "Новые записи на проверки: " + str(count_new)
     url = "https://api.telegram.org/bot" + config["tgToken"] + "/sendMessage?chat_id=" + config["tgUserID"] + "&text=" + msg_text
     response = urllib.request.urlopen(url)

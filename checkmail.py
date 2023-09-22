@@ -7,8 +7,15 @@ import json
 import os
 import requests
 
-with open('config.json', 'r') as f_config:
+_path_ = "./"
+absolute_path = os.path.abspath(_path_)
+file_cfg = absolute_path + "/" + "config.json"
+file_info = absolute_path + "/" + "mail.info"
+
+with open(file_cfg, 'r') as f_config:
     config = json.load(f_config)
+
+subj = "(HEADER Subject \"" + config["SUBJECT"] + "\")"
 
 mail = imaplib.IMAP4_SSL('imap.gmail.com', port=993)
 mail.login(config["LOGIN"], config["PASSWORD"])
@@ -16,14 +23,14 @@ mail.list()
 mail.select(config["MAIL_FOLDER"])
 
 # result, data = mail.search(None, 'FROM', '"platform@21-school.ru"', '(HEADER Subject "Someone registered for a project review")')
-result, data = mail.search(None, '(HEADER Subject "Someone registered for a project review")')
+result, data = mail.search(None, subj)
 
 
 ids = data[0]
 id_list = ids.split()
 
 dic_new = {}
-with open('mail.info', 'r') as dic_f:
+with open(file_info, 'r') as dic_f:
     dic_old = json.load(dic_f)
 
 i = config["MAIL_COUNT"]
@@ -41,8 +48,8 @@ while i > 0:
         count_new = count_new + 1
 mail.logout()
 json_in_file = json.dumps(dic_new)
-os.remove("mail.info")
-print(json_in_file, file=open('mail.info', 'a'))
+os.remove(file_info)
+print(json_in_file, file=open(file_info, 'a'))
 
 # Send count new massage in Telegram
 # https://api.telegram.org/bot<TOKEN>/sendMessage?chat_id=<CHAT_ID>&text=<MSG_TEXT>

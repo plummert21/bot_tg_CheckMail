@@ -7,10 +7,10 @@ import json
 import os
 import requests
 
-_path_ = "./"
-absolute_path = os.path.abspath(_path_)
+absolute_path = os.path.dirname(__file__)
 file_cfg = absolute_path + "/" + "config.json"
 file_info = absolute_path + "/" + "mail.info"
+
 
 with open(file_cfg, 'r') as f_config:
     config = json.load(f_config)

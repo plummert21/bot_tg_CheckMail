@@ -6,3 +6,4 @@ services:
       context: .
     volumes:
       - .:/botTG
+    command: cron -f

@@ -4,5 +4,5 @@
     "MAIL_FOLDER": "inbox",
     "MAIL_COUNT": 10,
     "tgToken": "TOKEN",
-    "tgUserID": "USER_ID"
+    "tgUserID": "UserID"
 }

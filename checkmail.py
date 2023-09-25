@@ -29,9 +29,8 @@ result, data = mail.search(None, subj)
 ids = data[0]
 id_list = ids.split()
 
-dic_new = {}
 with open(file_info, 'r') as dic_f:
-    dic_old = json.load(dic_f)
+    dic = json.load(dic_f)
 
 i = config["MAIL_COUNT"]
 count_new = 0
@@ -43,11 +42,11 @@ while i > 0:
     raw_email = data[0][1]
     raw_email_string = raw_email.decode('utf-8')
     email_message = email.message_from_string(raw_email_string)
-    dic_new.update({email_message['Date']:email_message['Subject']})
-    if email_message['Date'] not in dic_old:
+    if email_message['Date'] not in dic:
         count_new = count_new + 1
+        dic.update({email_message['Date']:email_message['Subject']})
 mail.logout()
-json_in_file = json.dumps(dic_new)
+json_in_file = json.dumps(dic)
 os.remove(file_info)
 print(json_in_file, file=open(file_info, 'a'))
 
